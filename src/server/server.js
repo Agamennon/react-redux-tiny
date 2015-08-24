@@ -9,11 +9,12 @@ const port = 3000;
 const dev_port = 4000;
 const mode = process.env.NODE_ENV || 'development';
 
-import teste from 'redux-tiny-router';
+/*import teste from 'redux-tiny-router';
 import {utils, routerActions,middleware,reduxTinyRouter, reducer} from 'redux-tiny-router';
-import {Link} from 'redux-tiny-router'
-
+import {Link} from 'redux-tiny-router'*/
+global.__SERVER_PORT__ = port;
 //console.log(Link);
+//console.log(utils);
 /*console.log(utils);
 console.log(routerActions);
 console.log(middleware);
@@ -31,5 +32,5 @@ server.listen(port, function () {
     //require('./apiServer.js')(app);
     var bundle = require('../../webpack/bundler/bundler.js');
     console.log('Server running, mode '+mode+', on port ' + ((mode === 'production') ? port : dev_port).toString());
-   bundle(mode,port,dev_port,paths);
+    bundle(mode,port,dev_port,paths);
 });

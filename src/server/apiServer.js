@@ -6,7 +6,7 @@ import compression from 'compression';
 import httpProxy from 'http-proxy';
 import render from './utils/render.js'
 
-
+// TO USE THIS PROXY API SERVER REMOVE BODY PARSER AND SESSION OTHER FLUF FROM app.js and place it here
 module.exports = function(app) {
 
     var appProxy = express();

@@ -11,7 +11,6 @@ export default function promiseMiddleware() {
         return promise().then(function (result) { // (A)
             next({...rest, result, type: SUCCESS})
         }).catch(function (error) { // (B)
-            console.log(error);
             next({...rest, error, type: FAILURE})
         });
 

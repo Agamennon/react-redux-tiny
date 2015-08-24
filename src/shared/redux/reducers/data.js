@@ -27,6 +27,25 @@ export default function data(state = initialState, action = {}) {
               ...state,
               clientData: action.data
           };
+
+      case 'GET_SUCCESS':
+        //  console.log('GET_SUCCESS');
+          // we could add an error message here, to be printed somewhere in our application
+          return {
+              ...state,
+              supercalafragilistic:'hahahahah'
+          };
+
+
+      case 'SOME_ACTION':
+          console.log('some action called');
+          // we could add an error message here, to be printed somewhere in our application
+      //    console.log(action);
+          return {
+             supera:'SOME_ACTION!',
+             ...state
+
+          };
     default:
       return state
   }

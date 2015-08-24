@@ -1,6 +1,8 @@
 
 import { createStore, applyMiddleware, combineReducers, compose  } from 'redux'
-import promiseMiddleware from './promise-middleware';
+import promiseMiddleware from './middleware/promise-middleware';
+import appMiddleware from './middleware/appmiddleware'
+
 
 
 import {middleware as reduxTinyRouterMiddleware ,reducer as reduxTinyRouterReducer} from 'redux-tiny-router';
@@ -16,7 +18,7 @@ import {middleware as reduxTinyRouterMiddleware ,reducer as reduxTinyRouterReduc
 
 //import thunk from 'redux-thunk'
 import * as reducers from './reducers'
-import sa from 'superagent'
+import * as api from '../utils/api'
 
 
 
@@ -25,6 +27,8 @@ import sa from 'superagent'
 
 
 export default function (data,url) {
+
+   // var api = require('../utils/api')(url);
 
  //     reducers.router = reduxTinyRouterReducer.router;
  //     var reducer = combineReducers(reducers);
@@ -43,14 +47,14 @@ export default function (data,url) {
         const { devTools, persistState } = require('redux-devtools');
 
         finalCreateStore = compose(
-            applyMiddleware(promiseMiddleware,reduxTinyRouterMiddleware),
+            applyMiddleware(promiseMiddleware,appMiddleware,reduxTinyRouterMiddleware),
             devTools(),
             persistState(url.match(/[?&]debug_session=([^&]+)\b/)),
             createStore
         );
 
     } else {
-        finalCreateStore = applyMiddleware(promiseMiddleware,reduxTinyRouterMiddleware)(createStore);
+        finalCreateStore = applyMiddleware(promiseMiddleware,appMiddleware,reduxTinyRouterMiddleware)(createStore);
     }
  //   console.log('creating store');
     return finalCreateStore(reducer, data);

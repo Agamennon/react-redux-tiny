@@ -7,8 +7,10 @@ module.exports = function(dev_port,paths) {
 
     var cfg =  require('./base.webpack.js')(paths);
 
-//cfg.devtool = 'cheap-module-eval-source-map';
- //   cfg.devtool = 'eval';  //usando SourceMapDevToolPlugin para o webpack pegar isso
+
+ // cfg.devtool = 'cheap-module-eval-source-map';
+
+  //  cfg.devtool = 'eval-source-map';  //usando SourceMapDevToolPlugin para o webpack pegar isso
 
     cfg.entry.app = _.union([
         'webpack-dev-server/client?http://localhost:'+dev_port,

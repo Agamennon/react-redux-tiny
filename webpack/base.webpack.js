@@ -16,7 +16,9 @@ module.exports = function base (p){
         output: {
             path: p.build,
             filename: 'bundle.js',
-            publicPath: '/build/'
+            publicPath: '/build/'/*,
+            devtoolModuleFilenameTemplate: "file://[absolute-resource-path]",
+            devtoolFallbackModuleFilenameTemplate: "file://[absolute-resource-path]?[hash]"*/
         },
 
         module: {

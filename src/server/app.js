@@ -3,7 +3,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import multer from 'multer';
 import compression from 'compression';
-import render from './utils/render.js'
+import render from './render.js'
 import httpProxy from 'http-proxy';
 import session from 'express-session';
 
@@ -37,9 +37,14 @@ module.exports = function(app,mode,root,port) {
 
     var data = {1:{gui:'legal'}};
     app.post('/api/data',function(req,res){
+     //   console.log('posted to api/data on the server');
         var index = req.body.index;
         var dataItem = (data[index]);
-        res.json(req.session.user);
+    //    console.log(req.session.user);
+       setTimeout(function(){
+           res.json(data);
+       },0) ;
+      //  res.json(req.session.user);
     });
     app.post('/api/login',function(req,res){
         req.session.user = {user:req.body.text};
