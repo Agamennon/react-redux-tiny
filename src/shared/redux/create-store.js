@@ -1,12 +1,15 @@
 
 import { createStore, applyMiddleware, combineReducers, compose  } from 'redux'
-import promiseMiddleware from './promise-middleware'
-//import {middleware as reduxTinyRouterMiddleware ,reducer as reduxTinyRouterReducer} from './router/router';
-var reduxTinyRouterMiddleware = require('./router/index.js').middleware;
-var reduxTinyRouterReducer = require('./router/index.js').reducer;
+import promiseMiddleware from './promise-middleware';
 
 
-//console.log(routerMiddleware);
+import {middleware as reduxTinyRouterMiddleware ,reducer as reduxTinyRouterReducer} from 'redux-tiny-router';
+//var reduxTinyRouterMiddleware = require('./router/index.js').middleware;
+//var reduxTinyRouterReducer = require('./router/index.js').reducer;
+//console.log(reduxTinyRouterReducer.router);
+
+
+//console.log(reduxTinyRouterMiddleware);
 //console.log(routerMiddleware2);
 //console.log(router);
 //console.log(router2);
@@ -15,11 +18,21 @@ var reduxTinyRouterReducer = require('./router/index.js').reducer;
 import * as reducers from './reducers'
 import sa from 'superagent'
 
+
+
+
+//console.log(reducers);
+
+
 export default function (data,url) {
 
-     // var reducer = combineReducers(Object.assign(reducers,routerReducers));
-
-    var reducer = combineReducers(Object.assign(reduxTinyRouterReducer,reducers));
+ //     reducers.router = reduxTinyRouterReducer.router;
+ //     var reducer = combineReducers(reducers);
+ //   console.log(url);
+ //   console.log(data);
+    var reducer = combineReducers(Object.assign({},reduxTinyRouterReducer,reducers));
+   // console.log(reducers);
+    //var reducer = combineReducers(Object.assign(reduxTinyRouterReducer));
     var finalCreateStore;
    // var noDebug = false;
 
@@ -39,6 +52,7 @@ export default function (data,url) {
     } else {
         finalCreateStore = applyMiddleware(promiseMiddleware,reduxTinyRouterMiddleware)(createStore);
     }
+ //   console.log('creating store');
     return finalCreateStore(reducer, data);
 
 }

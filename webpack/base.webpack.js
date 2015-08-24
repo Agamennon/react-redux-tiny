@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 
+
 module.exports = function base (p){
 
     return  {
@@ -17,15 +18,18 @@ module.exports = function base (p){
             filename: 'bundle.js',
             publicPath: '/build/'
         },
+
         module: {
             loaders: [
                 {
                     test: /\.jsx?$/,
                     loaders: [
                         'babel?optional[]=runtime&stage=0'
+
                     ],
 
-                    exclude: [p.node,p.build]
+                    include:  [path.resolve('src','client'),path.resolve('src','shared')]
+          //          exclude: [p.node,p.build]
                 },
                 {
                     test: /\.css$|scss/,

@@ -12,7 +12,8 @@ module.exports = function(dev_port,paths) {
 
     cfg.entry.app = _.union([
         'webpack-dev-server/client?http://localhost:'+dev_port,
-        'webpack/hot/only-dev-server'
+  //      'webpack/hot/only-dev-server'
+        'webpack/hot/dev-server'
     ],cfg.entry.app);
 
     cfg.plugins = _.union([

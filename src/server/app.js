@@ -12,7 +12,7 @@ module.exports = function(app,mode,root,port) {
         secret: 'react and redux rule!!!!',
         resave: false,
         saveUninitialized: false,
-        cookie: { maxAge: 60000 }
+        cookie: { maxAge: 6000000 }
     }));
     app.use(bodyParser.json()); // for parsing application/json
     app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
@@ -27,9 +27,11 @@ module.exports = function(app,mode,root,port) {
     // app.use(express.static(path.resolve(root, 'public')));
     app.use(express.static(path.resolve(__dirname,'..','..','public')));
 
+/*
     app.use('/favicon.ico', (req, res) => {
         return
     });
+*/
 
 
 

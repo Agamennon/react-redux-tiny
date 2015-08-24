@@ -9,6 +9,17 @@ const port = 3000;
 const dev_port = 4000;
 const mode = process.env.NODE_ENV || 'development';
 
+import teste from 'redux-tiny-router';
+import {utils, routerActions,middleware,reduxTinyRouter, reducer} from 'redux-tiny-router';
+import {Link} from 'redux-tiny-router'
+
+//console.log(Link);
+/*console.log(utils);
+console.log(routerActions);
+console.log(middleware);
+console.log(reduxTinyRouter);
+console.log(reducer);*/
+
 
 
 require('./app.js')(app,mode,paths.root,port);

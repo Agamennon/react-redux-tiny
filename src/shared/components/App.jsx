@@ -1,9 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import sa from 'superagent';
-import {routerActions} from '../redux/router'
+import {routerActions, Link} from 'redux-tiny-router'
+import { bindActionCreators } from 'redux';
 //var routerActions = require('../redux/router/index.js').routerActions;
 import * as otherActions from '../redux/someactions.js';
+
+
+//console.log(<Link>);
+
+/*@connect((state ) => {
+ return {
+ data:state.data,
+ router:state
+ }
+ })*/
 
 var a = Object.assign(routerActions,otherActions);
 
@@ -11,9 +22,10 @@ if (__CLIENT__) {
     require('./layout.scss');
 }
 
+
 @connect((state ) => {
     return {
-        data:state.data
+       state:state
     }
 })
 export class App extends React.Component {
@@ -35,7 +47,7 @@ export class App extends React.Component {
             console.log('api login');
             if (saErr){
                 console.log(saErr);
-                console.log('from error');
+                console.log('from errorresss');
             }
             else{
                 console.log(saRes.body);
@@ -103,16 +115,17 @@ export class App extends React.Component {
 
     render() {
 
-        var state = JSON.stringify(this.props.data, null, 2);
+        var state = JSON.stringify(this.props, null, 2);
 
         return (
             <div>
                 <h1>hello motherfuckers</h1>
-                <button onClick={this.action.bind(this)}> action </button>
+                <button onClick={this.action.bind(this)}> action</button>
                 <button onClick={this.login.bind(this)}> login </button>
                 <button  onClick={this.getData.bind(this)}> get data </button>
                 <button  onClick={this.logout.bind(this)}> logout </button>
                 <button  onClick={this.navigateTo.bind(this)}> navigateTo </button>
+                <Link><button>link test</button></Link>
             <pre>
                 redux state = {state}
             </pre>

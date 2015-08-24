@@ -2,13 +2,17 @@ import React from 'react';
 //import { createStore, combineReducers } from 'redux';
 //import * as reducers from '../../shared/redux/reducers/index';
 import createStore from '../../shared/redux/create-store.js';
-//import {reduxRouter} from '../../shared/redux/router/router';
-var reduxTinyRouter = require ('../../shared/redux/router/index.js').reduxTinyRouter;
+
+
+import {reduxTinyRouter} from 'redux-tiny-router';
+
+
+//var reduxTinyRouter = require ('../../shared/redux/router/index.js').reduxTinyRouter;
 
 
 import Layout from '../../shared/components/Layout.jsx';
 
-
+//console.log(reduxTinyRouter.initUniversal);
 
 
 export default (req, res, next) => {
