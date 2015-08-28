@@ -1,52 +1,84 @@
-const initialState = '';
 
-export default function data(state = initialState, action = {}) {
-  switch (action.type) {
-    case 'ROUTER_NAVIGATION':
-     //   console.log('i have been called');
-      // we could add an error message here, to be printed somewhere in our application
-        if (action.pattern === '/hello?gui&leo'){
-            console.log('hello gui leo');
-            // console.log(action.router);
+export default function data(state = {}, action = {}) {
+
+    switch (action.type) {
+
+
+    /*    case 'RTR_ROUTER_NAVIGATION':
+            return {
+                ...state,
+                rtr_directory: action.router.path
+            };
+*/
+
+     /*   case 'ROUTER_NAVIGATION':
+            if (action.pattern === '/hello?gui&leo'){
+                console.log('hello gui leo');
+                return {
+                    pattern:action.pattern,
+                    ...state
+                };
+            }
+            if (!action.router){
+                action.router = {path:'none'}
+            }
+            return {
+                ...state,
+                directory: action.router.path
+            };*/
+
+        case 'SOME_OTHER_ACTION':
 
             return {
-                pattern:action.pattern,
-                ...state
+                ...state,
+                someOther: 'someOtherAction',
+                val:action.val
 
             };
-        }
 
-      return {
-        ...state,
-        directory: action.router.path
-      };
-      case 'CLIENT_ACTION':
-             console.log('i have been calleddddd');
-          // we could add an error message here, to be printed somewhere in our application
-          return {
-              ...state,
-              clientData: action.data
-          };
+        case 'someActionFSA':
 
-      case 'GET_SUCCESS':
-        //  console.log('GET_SUCCESS');
-          // we could add an error message here, to be printed somewhere in our application
-          return {
-              ...state,
-              supercalafragilistic:'hahahahah'
-          };
+            console.log('SOME ACTION FSA!!!! ' + action.payload.data);
+            return {
+                ...state,
+                fsaResult:action.payload
+
+            };
+
+        case 'someActionFSA2':
+
+            console.log('SOME ACTION FSA2!!!! ' + action.payload.data);
+            return {
+                ...state,
+                fsa2Result:action.payload
+
+            };
 
 
-      case 'SOME_ACTION':
-          console.log('some action called');
-          // we could add an error message here, to be printed somewhere in our application
-      //    console.log(action);
-          return {
-             supera:'SOME_ACTION!',
-             ...state
+        case 'CLIENT_ACTION':
+            return {
+                ...state,
+                clientData: action.data
+            };
 
-          };
-    default:
-      return state
-  }
+        case 'GET_REQUEST':
+            console.log('app reducer REQUEST PENDING  (GET_REQUEST)');
+            return {
+                ...state,
+                pending:'truee'
+            };
+
+        case 'GET_SUCCESS':
+            console.log('app reducer REQUEST OVER (GET_SUCCESS)');
+            return {
+                ...state,
+                pending:'false',
+                frog:'fuck',
+                supercalafragilistic:'someAction hahahah'
+            };
+
+
+        default:
+            return {...state}
+    }
 }

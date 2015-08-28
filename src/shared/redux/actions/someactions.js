@@ -1,62 +1,71 @@
 
 import *  as api from '../../utils/api';
-import * as sa from 'superagent';
 
-
-
-/*    sa.post('http://localhost:3000/api/data').send({index:1,text:'guilherme'}).end(function(saErr,saRes){
-        if (saErr){
-            console.log(saErr);
-            console.log('from error');
-        }else {
-            console.log(saRes);
+export function login(username,password){
+    return {
+        types: ['ASYNC_REQUEST', 'GET_SUCCESS', 'GET_FAILURE'],
+        promise:() => {
+            return api.getData()
         }
-    });*/
-   /* console.log (__SERVER__);
-    api.getData().then(function(data){
-        console.log('data');
-        console.log(data)
-    },function(erro){
-        console.log('erro');
-        console.log(erro)
-    });*/
-
+    };
+}
 
 export function someAction(){
-    //http://stackoverflow.com/questions/25659960/how-can-i-execute-code-before-hashchange
- //   console.log('********************* SOME ACTION *****************');
-  /* console.log(api.getData().then(function(data){
-        console.log('data');
-        console.log(data)
-    },function(erro){
-       console.log('erro');
-       console.log(erro)
-   }));*/
-
-
- //   console.log(api.getData());
-
     return {
         types: ['GET_REQUEST', 'GET_SUCCESS', 'GET_FAILURE'],
         promise:() => {
            return api.getData()
         }
-
     };
-
-    //this.props.dispatch(actions.navigateToFromLink(hash));
-
 }
 
-export function someAction2(info){
-    //http://stackoverflow.com/questions/25659960/how-can-i-execute-code-before-hashchange
-    console.log('********************* HASH CHANGE *****************');
 
+export function someActionFSA(){
     return {
-        type:'SOME_ACTION',
-        info
+        type:'someActionFSA',
+        payload: api.getData()
     };
+}
 
-    //this.props.dispatch(actions.navigateToFromLink(hash));
+export function someActionFSA2(){
+    return {
+        type:'someActionFSA2',
+        payload: api.getData2()
+    };
+}
+
+export function thunktest (val){
+   return ()=>{
+       return api.getData().then(
+           (data)=>{
+               api.getData2().then(
+                   (data)=>{
+
+                       return {
+                           type:'SOME_OTHER_ACTION',
+                           val:'some shit'
+                       }
+                   },
+                   (err)=>{
+
+                   });
+           }
+           ,
+           (err)=>{
+
+           });
+   }
+}
+
+
+export function someOtherAction(){
+
+
+        return {
+            type:'SOME_OTHER_ACTION'
+
+        };
+
+
 
 }

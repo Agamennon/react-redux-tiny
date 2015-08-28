@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var path = require('path');
 
 
-
 module.exports = function base (p){
 
     return  {
@@ -19,6 +18,12 @@ module.exports = function base (p){
             publicPath: '/build/'/*,
             devtoolModuleFilenameTemplate: "file://[absolute-resource-path]",
             devtoolFallbackModuleFilenameTemplate: "file://[absolute-resource-path]?[hash]"*/
+        },
+        resolve: {
+            alias: {
+                react: path.resolve(p.root,'./node_modules/react')
+
+            }
         },
 
         module: {
