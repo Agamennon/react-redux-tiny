@@ -47,7 +47,7 @@ export default function data(state = {}, action = {}) {
 
         case 'someActionFSA2':
 
-            console.log('SOME ACTION FSA2!!!! ' + action.payload.data);
+         //   console.log('SOME ACTION FSA2!!!! ' + action.payload.data);
             return {
                 ...state,
                 fsa2Result:action.payload

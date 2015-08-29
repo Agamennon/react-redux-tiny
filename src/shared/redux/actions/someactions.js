@@ -27,10 +27,17 @@ export function someActionFSA(){
     };
 }
 
-export function someActionFSA2(){
+
+function someActionFSA2DO (){
     return {
         type:'someActionFSA2',
         payload: api.getData2()
+    };
+}
+
+export function someActionFSA2(){
+   return (dispatch)=>{
+       dispatch(someActionFSA2DO())
     };
 }
 

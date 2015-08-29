@@ -18,14 +18,14 @@ export default function (data,url) {
     if ( (__DEVELOPMENT__) && (__DEBUG__) && (__CLIENT__)) {
         const { devTools, persistState } = require('redux-devtools');
         finalCreateStore = compose(
-            applyMiddleware(appMiddleware,reduxTinyRouterMiddleware),  //appMiddleware removed
+            applyMiddleware(thunk,promiseMiddlewareLight,appMiddleware,reduxTinyRouterMiddleware),  //appMiddleware removed
             devTools(),
             persistState(url.match(/[?&]debug_session=([^&]+)\b/)),
             createStore
         );
 
     } else {
-        finalCreateStore = applyMiddleware(universal,appMiddleware,reduxTinyRouterMiddleware)(createStore); //appMiddleware removed
+        finalCreateStore = applyMiddleware(universal,thunk,promiseMiddlewareLight,appMiddleware,reduxTinyRouterMiddleware)(createStore);
 
     }
     return finalCreateStore(reducer, data);

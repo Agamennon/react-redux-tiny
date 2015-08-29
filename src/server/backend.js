@@ -23,10 +23,11 @@ export default function backend (app){
     });
 
     app.post('/api/data2',function(req,res){
-
+        console.log('DATA 2 REQUESTED! -------------------------------------------------------------------');
         setTimeout(function(){
+            console.log('DATA 2 BACKEND -------------------------------------------------------------------');
             res.json({data:'yeeyeyy'});
-        },1500) ;
+        },0) ;
     });
 
     app.post('/api/data',function(req,res){

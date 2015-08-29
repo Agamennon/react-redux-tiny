@@ -108,6 +108,7 @@ export class App extends React.Component {
 
     preventNavigation (){
         this.props.dispatch(a.rtrPreventNavigation());
+     //   this.props.dispatch(a.rtrPreventNavigation('dont go dude!!! i luve u'));
     }
 
     doPreventedNavigation (){
@@ -163,10 +164,7 @@ export class App extends React.Component {
     componentWillMount(){
         console.log('component WILL MOUNT');
         if (__SERVER__) {
-          //  console.log("APP DISPATCH!!!");
-            //this.props.dispatch(a.someActionFSA2());
-         //   this.props.dispatch(a.thunktest());
-
+           this.props.dispatch(a.someActionFSA2());
         }
     }
     componentDidMount () {
@@ -190,7 +188,13 @@ export class App extends React.Component {
     render() {
 
         var state = JSON.stringify(this.props, null, 2);
+        var prevent = this.props.state.router.preventNavigation;
+        var attemp =  this.props.state.router.attemptedOnPrevent;
+        var popup = (prevent && attemp)?(<div>This is a popup window</div>):(<div>this is not</div>);
+        var temp = this.props.state.data;
+        var fsa2Result = temp.fsa2Result;
 
+        var fsa2 = fsa2Result ? <div>{fsa2Result}</div>: null;
         return (
             <div>
                 <h1>Welcome to the test ana celi</h1>
@@ -213,6 +217,9 @@ export class App extends React.Component {
                 <a href="/ugabuga">click me dude</a>
             <pre>
                 redux state = {state}
+                <hr/>
+                {popup}
+                {fsa2}
             </pre>
             </div>
         );
