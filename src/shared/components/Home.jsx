@@ -4,10 +4,6 @@ import {routerActions, Link} from 'redux-tiny-router'
 import { bindActionCreators } from 'redux';
 import * as otherActions from '../redux/actions/someactions.js';
 import * as api from '../utils/api';
-import  HttpHash from 'http-hash';
-
-var hash = HttpHash();
-console.log(hash);
 
 
 
@@ -34,17 +30,6 @@ export class Home extends React.Component {
     }
 
 
-
-    someAction (url){
-      //  hash.set('/other/*',routerActions.rtrNavigateTo);
-        console.log(url);
-        var route = hash.get('/other/cucamonga?gui=10&sapiens=20');
-        console.log(route);
-        if (route.src){
-          // route.handler(a.rtrNavigateTo('/other'));
-         // this.props.dispatch(route.handler('/other'));
-        }
-    }
 
 
     navigateToHome (){
@@ -128,7 +113,6 @@ export class Home extends React.Component {
                 <hr/>
                 <h3>{allow} {prevented}</h3>
                 <hr/>
-                <button  onClick={this.someAction.bind(this,router.url)}>Test</button>
                 <button  onClick={this.navigateToHome.bind(this)}>To Home</button>
                 <button  onClick={this.navigateToOther.bind(this)}>To Other </button>
                 <button  onClick={this.navigateToOtherSearch.bind(this)}>To Other with Search</button>
