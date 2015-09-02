@@ -11,20 +11,19 @@ export default function appMiddleware({ dispatch, getState}) {
 
               var router = action.router;
 
-              if (getState().data.user || router.path === '/login'){
+              if (getState().data.user || router.path === '/login'){ //did the user logged in?
 
                   if (router.path === '/redirect'){
-                   //   router = utils.urlToRouter('/redirect');
+                      router = utils.urlToRouter('/other');
                   }
+                  //more of your stuff here
                   return next(action);
-              } else {
-                  //tell the router what url the user was trying to reach
-
+              } else { //user needs to be authenticated so redirect him
+                  //tell the router what url the user was trying to reach so we can send him there later
                   dispatch(routerActions.rtrPreventedNavigationAttempted(router.url));
-                  dispatch(routerActions.rtrNavigateTo('/login'));
-
-                  return;
                   //redirect to login
+                  dispatch(routerActions.rtrNavigateTo('/login'));
+                  return;
 
               }
 

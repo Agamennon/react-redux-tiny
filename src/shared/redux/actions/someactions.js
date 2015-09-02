@@ -11,12 +11,7 @@ export function setUser (user){
     }
 }
 
-/*
-export function login(username,password){
-    return (dispatch,getState)=>{
-        dispatch(api.login(dispatch,getState,username,password))
-    };
-}*/
+
 
 export function login(username,password){
     return (dispatch,getState)=>{

@@ -7,8 +7,6 @@ import {applyMiddleware as tinyApplyMiddleware} from 'redux-tiny-router'
 import {middleware as reduxTinyRouterMiddleware,universal, reducer as reduxTinyRouterReducer} from 'redux-tiny-router';
 import * as reducers from './reducers'
 
-//console.log(applyMiddleware);
-//console.log(tinyApplyMiddleware);
 var __DEVELOPMENT__ = true;
 var __DEBUG__ = true;
 var __CLIENT__ = true;
