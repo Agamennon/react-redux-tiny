@@ -116,7 +116,7 @@ export class Home extends React.Component {
                 <button  onClick={this.allowNavigation.bind(this)}> Allow navigation </button>
                 <button  onClick={this.preventNavigation.bind(this)}> Prevent navigation </button>
                 <button  onClick={this.doPreventedNavigation.bind(this)}> Do Prevented </button>
-                <Link path="/other/withchild" search={{num:'Ten!'}}>React Link</Link>
+                <Link path="/other/withchild" search={{num:'Ten!'}}>React Link to Other Child</Link>
                 <hr/>
 
             <pre>
