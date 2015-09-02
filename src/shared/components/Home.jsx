@@ -88,10 +88,7 @@ export class Home extends React.Component {
 
 
     componentDidMount () {
-        hash.set('/*',routerActions.rtrNavigateTo);
-        hash.set('/other/*',this.gui2);
-        hash.set('/other/mango',this.props.dispatch);
-        hash.set('/other',this.gui);
+
 
     }
 
