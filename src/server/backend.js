@@ -1,7 +1,6 @@
 
 var users = {
-    guilherme:'123',
-    leonardo:'456'
+    redux:'tinyrouter'
 };
 
 
@@ -12,31 +11,24 @@ export default function backend (app){
 
 
     app.post('/api/login',(req,res)=>{
+
       var {username,password} = req.body;
         if ((users[username]) && (users[username] === password)){
             req.session.user = username;
-            res.json({status:'success'});
+            res.json({status:'success',name:'redux'});
         }else{
-            res.json({status:'failure'})
+            res.status(401).send({status:'failure,does not match'});
         }
-
-    });
-
-    app.post('/api/data2',function(req,res){
-        console.log('DATA 2 REQUESTED! -------------------------------------------------------------------');
-        setTimeout(function(){
-            console.log('DATA 2 BACKEND -------------------------------------------------------------------');
-            res.json({data:'yeeyeyy'});
-        },0) ;
     });
 
     app.post('/api/data',function(req,res){
-        data = data - 20;
-        if (data < 0) data = 230;
+
         setTimeout(function(){
-            res.json({data:data});
-        },100+data) ;
+        res.json({data:'some data from the server'});
+        },2000) ;
     });
+
+
 
     app.post('/api/logout',function(req,res){
         delete req.session.user;

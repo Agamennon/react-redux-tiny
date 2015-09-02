@@ -4,9 +4,10 @@
   "description": "A and exemple and oilerplate for running a Webpack React Universal app with redux and redux-tiny-router",
   "main": "server.js",
   "scripts": {
-    "start": "npm run webpack & npm run serve",
+    "start": "NODE_ENV=hot node ./boot.js",
+    "start2": "npm run webpack & npm run serve",
     "webpack": "node_modules/.bin/webpack -w",
-    "serve": "NODE_ENV=development node_modules/.bin/nodemon -q boot.js",
+    "serve": "NODE_ENV=hot node_modules/.bin/nodemon -q boot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -55,6 +56,7 @@
     "babel": "*",
     "babel-plugin-react-hotify": "^0.1.1",
     "core-js": "^0.9.18",
+    "http-hash": "^2.0.0",
     "install": "^0.1.8",
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.37",

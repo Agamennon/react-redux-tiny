@@ -1,4 +1,7 @@
 # React Redux Tiny Router Univeral Example
 
-docs todo...
+npm install
+npm run start
+
+docs todo... (not fully clean ether...)
 Universal react + redux + redux-tiny-router

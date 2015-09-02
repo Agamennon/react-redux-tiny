@@ -25,7 +25,6 @@ module.exports = function(app,mode,root,port) {
     app.set('views', 'src/server/views/');
     app.set('view engine', 'ejs');
 
-    // app.use(express.static(path.resolve(root, 'public')));
     app.use(express.static(path.resolve(__dirname,'..','..','public')));
 
 /*
@@ -40,16 +39,7 @@ module.exports = function(app,mode,root,port) {
     backend(app);
 
 
-    app.use(render); //remover
-
-   /* app.get('/',(req,res) =>{
-        console.log('hello');
-        res.render('noserver', {
+    app.use(render);
 
 
-        });
-    });
-*/
-
-    // app.get('*', render);
 };

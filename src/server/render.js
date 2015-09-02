@@ -5,25 +5,25 @@ import Layout from '../shared/components/Layout.jsx';
 
 export default (req, res, next) => {
 
-  const production = !__DEVELOPMENT__;
+    const production = !__DEVELOPMENT__;
 
-  //console.log(reduxTinyRouter);
+    if (__UNIVERSAL__){
+        var url = req.headers.host+req.url;
+        reduxTinyRouter.initUniversal(url,createStore,Layout).then((data)=>{
+            res.render('index', {
+                html: data.html,
+                payload: JSON.stringify(data.state),
+                production:production
+            });
+        });
+    } else {
+        res.render('index', {
+            html: '',
+            payload:JSON.stringify({}),
+            production:production
+        });
+    }
 
-  //var {state,store} = reduxTinyRouter.initUniversal(req.headers.host+req.url,createStore);
-reduxTinyRouter.initUniversal(req.headers.host+req.url,createStore,Layout).then((data)=>{
 
 
-    //RENDER TO STRING NEED TO HAPPEN INSIDE INITUNIVERSAL
-  //  let html = React.renderToString(<Layout store={data.store}/>);
-   // console.log(data.html);
-
-      res.render('index', {
-     //     html: html,
-          html: data.html,
-          payload: JSON.stringify(data.state),
-          production:production
-      });
-  });
-
-
- }
+}

@@ -56,6 +56,7 @@ module.exports = function base (p){
                 __DEBUG__: true,
                 __DEVELOPMENT__: JSON.stringify(process.env.NODE_ENV !== 'production'),
                 __CLIENT__: true,
+                __UNIVERSAL__: p.universal,
                 __SERVER__: false
             })
 

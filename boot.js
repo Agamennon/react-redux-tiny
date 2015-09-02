@@ -3,14 +3,15 @@
  require('babel/register')({
  stage: 0,
  sourceMap:true,
-// sourceMap: "inline",
  optional:['runtime']
- //extensions: [".es6", ".es", ".jsx", ".js"]
  });
+
+var paths = require ('./paths');
 
  global.__CLIENT__ = false;
  global.__SERVER__ = true;
  global.__DEBUG__ = true;
+ global.__UNIVERSAL__ = paths.universal;
  global.__NODE_ENV__ = process.env.NODE_ENV;
  global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
 

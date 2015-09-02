@@ -23,7 +23,7 @@ module.exports = function(mode,port,dev_port,paths){
         bundleStart = Date.now();
     });
     compiler.plugin('done', function() {
-        console.log('Bundled em ' + (Date.now() - bundleStart) + 'ms!');
+        console.log('Bundled in ' + (Date.now() - bundleStart) + 'ms!');
     });
 
     if (mode !== 'production'){
@@ -43,7 +43,7 @@ module.exports = function(mode,port,dev_port,paths){
         });
         bundler.listen(dev_port, 'localhost', function () {
       //  bundler.listen(dev_port, '192.168.25.10', function () {
-            console.log('Aguarde...');
+            console.log('Processing...');
         });
     }else {
         compiler.run(function(err, stats) {
