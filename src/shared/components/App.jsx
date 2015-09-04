@@ -25,14 +25,14 @@ if (__CLIENT__) {
 
 @connect((state ) => {
     return {
-        state:state
+        src:state.router.src
     }
 })
 export class App extends React.Component {
     render() {
 
-        const src = this.props.state.router.src;
-        console.log(src);
+        const src = this.props.src;
+  
         switch (src) { //first path
             case '/':
                 return <Home/>;
