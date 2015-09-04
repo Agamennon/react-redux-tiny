@@ -32,7 +32,7 @@ export class App extends React.Component {
     render() {
 
         const src = this.props.src;
-  
+
         switch (src) { //first path
             case '/':
                 return <Home/>;
