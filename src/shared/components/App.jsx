@@ -1,18 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import {Home} from './Home.jsx';
-import {routerActions} from 'redux-tiny-router';
+import {utils} from 'redux-tiny-router';
 import {Other} from './Other.jsx';
+import {Special} from './Special.jsx';
+import {Secure} from './Secure.jsx';
 import {Login} from './Login.jsx';
 import {NotFound} from './NotFound.jsx';
 
 
-/*
-import {routerActions} from 'redux-tiny-router'
-import * as otherActions from '../redux/actions/someactions.js';
-var a = Object.assign({},routerActions,otherActions);
-*/
-
+utils.setRoutes([
+    '/',
+    '/login',
+    '/other',
+    '/other/:id/*',
+    '/special:id',
+    '/secure/*'
+]);
 
 
 if (__CLIENT__) {
@@ -27,18 +31,23 @@ if (__CLIENT__) {
 export class App extends React.Component {
     render() {
 
-
-
-        var router = this.props.state.router;
-        switch (router.paths[0]) { //first path
+        const src = this.props.state.router.src;
+        console.log(src);
+        switch (src) { //first path
             case '/':
                 return <Home/>;
-            case 'login':
+            case '/login':
                 return <Login/>;
-            case 'other':
+            case '/other':
                 return <Other/>;
+            case '/other/:id/*':
+                return <Other/>;
+            case '/secure/*':
+                return <Secure/>;
             default:
                 return <NotFound/>;
         }
+
+
     }
 }

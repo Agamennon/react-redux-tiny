@@ -29,8 +29,8 @@ export class Login extends React.Component {
         this.setState({password: e.target.value});
     }
 
- /*   componentWillMount(){
-        console.log('component WILL MOUNT LOGIN');
+    componentWillMount(){ //UNCOMMENT THIS FOR A LONG ASYNC ACTION
+    /*    console.log('component WILL MOUNT LOGIN');
         if (__UNIVERSAL__ && !__CLIENT__) {
             console.log('dispatching...');
             this.props.dispatch(a.getData());
@@ -40,10 +40,10 @@ export class Login extends React.Component {
             console.log('dispatching...');
             this.props.dispatch(a.getData());
             //   this.props.dispatch(a.someActionFSA2());
-        }
+        }*/
 
 
-    }*/
+    }
 
     login (){
         const username = this.state.username;

@@ -23,10 +23,10 @@ export function login(dispatch,getState,username,password){
 
                dispatch(a.setUser(data.name));  //user logged set the user
                if (getState().router.attemptedOnPrevent) //did the user was prevented from navigating
-                  dispatch(a.rtrDoPreventedNavigation()); //now that he is authenticated, let him go to the url he wanted to., he could be prevented from it again
+                  dispatch(a.doPreventedNavigation()); //now that he is authenticated, let him go to the url he wanted to., he could be prevented from it again
                else {
                    console.log('navigation to /');
-                   dispatch(a.rtrNavigateTo('/'));
+                   dispatch(a.navigateTo('/'));
                }
             console.log('one1');
             return data;

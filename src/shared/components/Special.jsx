@@ -15,7 +15,7 @@ var a = Object.assign({},routerActions,otherActions);
         data:state.data
     }
 })
-export class Other extends React.Component {
+export class Special extends React.Component {
 
     render() {
         var state = JSON.stringify(this.props, null, 2);
@@ -26,7 +26,7 @@ export class Other extends React.Component {
         var Number = number ? (<span>number parameter = {number}</span>): null;
 
         var Component = (<div>
-            <h1>This is Other! {Number}</h1>
+            <h1>This is Special Other! {Number}</h1>
             <hr/>
             <pre>redux state = {state}</pre>
         </div>);
