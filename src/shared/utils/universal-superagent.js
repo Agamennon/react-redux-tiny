@@ -14,14 +14,7 @@ export class universalSuperagent {
                             request.send(options.data);
                         }
                         request.end((err, res) => {
-                            //console.log(err||res);
                             if (err) {
-                              /*  if (res){
-                                    reject(res.body || err);
-                                }else{
-                                    reject(err);
-                                }*/
-
                                 reject(res.body || err);
                             } else {
                                 resolve(res.body);

@@ -17,11 +17,12 @@ html {
 html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+//  overflow: hidden;
 
 
 
 }
+
 
 button {
   padding:6px;
@@ -35,6 +36,7 @@ h1, h2, h3{
 
 a {
   margin:5px;
+ // text-decoration: none;
 }
 
 pre {

@@ -1,34 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {routerActions, utils} from 'redux-tiny-router'
-import { bindActionCreators } from 'redux';
-import * as otherActions from '../redux/actions/someactions.js';
-import * as api from '../utils/api';
+import {Navigation} from './Navigation.jsx';
 import {OtherChild} from './OtherChild.jsx';
-
-var a = Object.assign({},routerActions,otherActions);
-
+import {Link} from 'redux-tiny-router';
 
 @connect((state ) => {
     return {
-        router:state.router,
-        data:state.data
+        router:state.router
     }
 })
 export class Other extends React.Component {
 
     render() {
+
         var state = JSON.stringify(this.props, null, 2);
         var router = this.props.router;
-        //var otherSubRoute = router.paths[1];
-
-        var number = router.params.num;
-        var Number = number ? (<span>number parameter = {number}</span>): null;
+        var Number = router.query.num ? (<span>number = {router.query.num}</span>): null;
 
         var Component = (<div>
             <h1>This is Other! {Number}</h1>
             <hr/>
-            <pre>redux state = {state}</pre>
+            <Navigation/>
+            <pre>
+                router state = {state}
+            </pre>
         </div>);
 
 
@@ -41,7 +36,7 @@ export class Other extends React.Component {
                     </div>
                 );
             default:
-                return <div> {Component} </div>;
+                return (<div> {Component} </div>);
         }
     }
 }

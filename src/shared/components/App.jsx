@@ -1,12 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux'
+import React, { Component, PropTypes } from 'react';
+import {connect} from 'react-redux'
+import {utils} from 'redux-tiny-router'
 import {Home} from './Home.jsx';
-import {utils} from 'redux-tiny-router';
 import {Other} from './Other.jsx';
-import {Special} from './Special.jsx';
+import {PreventExample} from './PreventExample.jsx';
 import {Secure} from './Secure.jsx';
 import {Login} from './Login.jsx';
 import {NotFound} from './NotFound.jsx';
+
 
 
 utils.setRoutes([
@@ -14,8 +15,8 @@ utils.setRoutes([
     '/login',
     '/other',
     '/other/:id/*',
-    '/special:id',
-    '/secure/*'
+    '/secure/*',
+    '/prevent'
 ]);
 
 
@@ -25,15 +26,16 @@ if (__CLIENT__) {
 
 @connect((state ) => {
     return {
-        src:state.router.src
+        router:state.router
     }
 })
-export class App extends React.Component {
+export default class App extends Component {
+
     render() {
 
-        const src = this.props.src;
+        const src = this.props.router.src;
 
-        switch (src) { //first path
+        switch (src) {
             case '/':
                 return <Home/>;
             case '/login':
@@ -41,9 +43,11 @@ export class App extends React.Component {
             case '/other':
                 return <Other/>;
             case '/other/:id/*':
-                return <Other/>;
+                return <Other />;
             case '/secure/*':
-                return <Secure/>;
+                return <Secure />;
+            case '/prevent':
+                return <PreventExample/>;
             default:
                 return <NotFound/>;
         }
@@ -51,3 +55,4 @@ export class App extends React.Component {
 
     }
 }
+

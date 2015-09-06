@@ -1,36 +1,24 @@
 import * as a from '../actions/someactions'
-import {routerActions, utils} from 'redux-tiny-router'
+import {tinyActions, utils} from 'redux-tiny-router'
 
 
 export default function appMiddleware({ dispatch, getState}) {
     return (next) => {
         return (action) => {
 
-
-          if (action.type === 'ROUTER_NAVIGATION'){
-
-              var router = action.router;
-
-              if (getState().data.user || router.path === '/login'){ //did the user logged in?
-
-                  if (router.path === '/redirect'){
-                      router = utils.urlToRouter('/other');
-                  }
-                  //more of your stuff here
-                  return next(action);
-              } else { //user needs to be authenticated so redirect him
-                  //tell the router what url the user was trying to reach so we can send him there later
-                  dispatch(routerActions.preventedNavigationAttempted(router.url));
-                  //redirect to login
-                  dispatch(routerActions.navigateTo('/login'));
-                  return;
-
-              }
-
-
-
-          }
-
+            if (action.type === 'ROUTER_NAVIGATION'){
+                const {url,path} = action.router;
+                const isSecurePlace = utils.check('/secure/*',url);
+                const loggedIn = getState().data.user;
+                if (path === '/login') //if user wants to login thats ok and we dont want to loop!;
+                    return next(action);
+                if (isSecurePlace && !loggedIn){
+                    dispatch(tinyActions.preventedNavigationAttempted(url)); //router will now store the attempted url for your convenience
+                    dispatch(tinyActions.navigateTo('/login'));  //navigate to /login
+                    return;  // this will stop further ROUTER_NAVIGATION processing, the action it will never reach the router middleware or the reducer
+                }
+                return next(action);
+            }
 
             return (next(action));
         }

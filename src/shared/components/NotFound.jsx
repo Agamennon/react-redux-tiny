@@ -1,14 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {routerActions, Link} from 'redux-tiny-router'
-import { bindActionCreators } from 'redux';
-import * as otherActions from '../redux/actions/someactions.js';
-import * as api from '../utils/api';
 
-
-
-
-var a = Object.assign({},routerActions,otherActions);
 
 @connect((state ) => {
     return {

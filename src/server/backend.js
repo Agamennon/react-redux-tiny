@@ -3,10 +3,6 @@ var users = {
     redux:'tinyrouter'
 };
 
-
-var data = 230;
-
-
 export default function backend (app){
 
 

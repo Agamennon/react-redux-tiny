@@ -9,13 +9,12 @@ export default function promiseMiddleware({ dispatch, getState }) {
 
         return isPromise(action.payload)
             ? action.payload.then(
-                result => {
-
+            (result) => {
                 dispatch({ ...action, payload: result });
 
             },
-                error => {
-                    console.log(error);
+            (error) => {
+                console.log(error);
                 dispatch({ ...action, payload: error, error: true });
             }
         )

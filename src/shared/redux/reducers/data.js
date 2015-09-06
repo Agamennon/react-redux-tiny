@@ -12,6 +12,14 @@ export default function data(state = {}, action = {}) {
 
             };
 
+        case 'PATH':
+
+            return {
+                ...state,
+                path: action.path
+
+            };
+
         case 'GET_DATA':
             return {
                 ...state,

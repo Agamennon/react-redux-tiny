@@ -1,25 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {routerActions, Link} from 'redux-tiny-router'
-import { bindActionCreators } from 'redux';
+import {tinyActions, Link} from 'redux-tiny-router'
 import * as otherActions from '../redux/actions/someactions.js';
-import * as api from '../utils/api';
 
-
-var a = Object.assign({},routerActions,otherActions);
+var actions = Object.assign({},tinyActions,otherActions);
 
 @connect((state ) => {
     return {
-        state:state
+        router:state.router
     }
 })
 export class Login extends React.Component {
-
 
     constructor(props) {
         super(props);
         this.state = {username: 'redux',password:'tinyrouter'};
     }
+
 
     handleUsername (e){
         this.setState({username: e.target.value});
@@ -29,29 +26,11 @@ export class Login extends React.Component {
         this.setState({password: e.target.value});
     }
 
-    componentWillMount(){ //UNCOMMENT THIS FOR A LONG ASYNC ACTION
-    /*    console.log('component WILL MOUNT LOGIN');
-        if (__UNIVERSAL__ && !__CLIENT__) {
-            console.log('dispatching...');
-            this.props.dispatch(a.getData());
-        }
-
-        if (!__UNIVERSAL__) {
-            console.log('dispatching...');
-            this.props.dispatch(a.getData());
-            //   this.props.dispatch(a.someActionFSA2());
-        }*/
-
-
-    }
-
     login (){
         const username = this.state.username;
         const password = this.state.password;
-        this.props.dispatch(a.login(username,password));
-       // api.login(this.state.username,this.state.password);
+        this.props.dispatch(actions.login(username,password));
     }
-
 
     render() {
 

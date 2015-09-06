@@ -27,18 +27,7 @@ module.exports = function(app,mode,root,port) {
 
     app.use(express.static(path.resolve(__dirname,'..','..','public')));
 
-/*
-    app.use('/favicon.ico', (req, res) => {
-        return
-    });
-*/
-
-
-
-
     backend(app);
-
-
     app.use(render);
 
 
