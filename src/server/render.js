@@ -7,9 +7,16 @@ export default (req, res, next) => {
 
     const production = !__DEVELOPMENT__;
 
+    var initialState = {
+        data : {
+            user:req.session.user
+        }
+    };
+
+    console.log(initialState);
     if (__UNIVERSAL__){
         var url = req.headers.host+req.url;
-        reduxTinyRouter.initUniversal(url,createStore,Layout).then((data)=>{
+        reduxTinyRouter.initUniversal(url,createStore,Layout,initialState).then((data)=>{
             res.render('index', {
                 html: data.html,
                 payload: JSON.stringify(data.state),
@@ -19,7 +26,7 @@ export default (req, res, next) => {
     } else {
         res.render('index', {
             html: '',
-            payload:JSON.stringify({}),
+            payload:JSON.stringify(initialState),
             production:production
         });
     }

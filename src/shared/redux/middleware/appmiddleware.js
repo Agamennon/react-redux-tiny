@@ -6,6 +6,7 @@ export default function appMiddleware({ dispatch, getState}) {
     return (next) => {
         return (action) => {
 
+
             if (action.type === 'ROUTER_NAVIGATION'){
                 const {url,path} = action.router;
                 const isSecurePlace = utils.check('/secure/*',url);
