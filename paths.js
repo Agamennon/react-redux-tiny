@@ -1,7 +1,7 @@
 var path = require('path');
 var root =  path.resolve(__dirname);
 module.exports = {
-      universal:false,
+      universal:true,
       root:root,
       // app:path.resolve(root, 'app'),
       app:path.resolve(root, 'src','client'),

@@ -13,7 +13,6 @@ export default (req, res, next) => {
         }
     };
 
-    console.log(initialState);
     if (__UNIVERSAL__){
         var url = req.headers.host+req.url;
         reduxTinyRouter.initUniversal(url,createStore,Layout,initialState).then((data)=>{
