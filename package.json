@@ -1,6 +1,6 @@
 {
   "name": "react-redux-tiny",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A and exemple and oilerplate for running a Webpack React Universal app with redux and redux-tiny-router",
   "main": "server.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "node-sass": "^3.2.0",
     "query-string": "^2.4.0",
     "react": "^0.13.3",
-    "react-redux": "^2.1.0",
+    "react-redux": "^2.1.1",
     "redux": "^2.0.0",
     "redux-devtools": "^2.1.0",
     "redux-promise": "^0.5.0",
